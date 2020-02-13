@@ -11,13 +11,12 @@ import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-import Indent from '@ckeditor/ckeditor5-indent/src/indent';
-import Link from '@ckeditor/ckeditor5-link/src/link';
-import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
+import Font from '@ckeditor/ckeditor5-font/src/font';
 
 export default class InlineEditor extends InlineEditorBase {}
 
@@ -28,26 +27,34 @@ InlineEditor.builtinPlugins = [
 	Autoformat,
 	Bold,
 	Italic,
+	Underline,
 	CKFinder,
-	Indent,
-	Link,
-	List,
 	Paragraph,
-	PasteFromOffice
+	PasteFromOffice,
+	Font
 ];
 
 // Editor configuration.
 InlineEditor.defaultConfig = {
 	toolbar: {
+		fontSize: { // don't work
+			options: [
+				8,
+				10,
+				'default',
+				14,
+				16,
+				18
+			]
+		},
 		items: [
 			'bold',
 			'italic',
-			'link',
-			'bulletedList',
-			'numberedList',
+			'underline',
 			'|',
-			'indent',
-			'outdent',
+			'fontSize',
+			'fontColor',
+			'fontBackgroundColor',
 			'|',
 			'undo',
 			'redo'
